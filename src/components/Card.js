@@ -1,16 +1,20 @@
 import React from "react";
-
+import image from '../images/img.png'
 class Card extends React.Component {
   render() {
       const {datos}=this.props
     return (
       <div>
-        <div className="card mx-auto" style={{ width: 300 }}>
-          <img src={datos.avatar_url} className="card-img-top" alt="avatar" />
+        <div className="card bg-light mx-auto" style={{ width: 400 }}>
+          <img src={datos.avatar_url|| image } className="card-img-top" alt="avatar" />
           <div className="card-body">
             <h5 className="card-title">Nombre: {datos.name}</h5>
-            <p className="card-text">Usuario: {datos.login}</p>
-            <p className="card-text">Lugar: {datos.location}</p>
+            <p className="card-text">
+              <strong>Usuario:</strong> {datos.login}
+            </p>
+            <p className="card-text">
+              <strong>Lugar:</strong> {datos.location}
+            </p>
           </div>
           <div className="card-body">
             <a href={datos.repos_url} className="card-link">

@@ -1,9 +1,8 @@
 import React from "react";
 
-class Buscardor extends React.Component {  
-
+class Buscardor extends React.Component {
   render() {
-      const { handleChange, usuario, handleSubmit } = this.props;
+    const { handleChange, usuario, handleSubmit } = this.props;
     return (
       <form onSubmit={handleSubmit}>
         <div className="card-body  mx-auto" style={{ width: 400 }}>
