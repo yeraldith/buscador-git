@@ -2,7 +2,7 @@ import React from "react";
 
 class Buscardor extends React.Component {
   render() {
-    const { handleChange, usuario, handleSubmit } = this.props;
+    const { handleChange, handleSubmit } = this.props;
     return (
       <form onSubmit={handleSubmit}>
         <div className="card-body  mx-auto" style={{ width: 400 }}>
@@ -12,8 +12,8 @@ class Buscardor extends React.Component {
               type="text"
               className="form-control col-8"
               id="usuario"
-              value={usuario}
               onChange={handleChange}
+              required
             />
             <button
               type="submit"

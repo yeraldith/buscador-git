@@ -5,19 +5,20 @@ import InfoRepos from "../components/InfoRepos";
 
 class Inicio extends React.Component {
   state = {
-    usuario: [],
+    usuario: {},
     repos: [],
+    nombre:"",
     loading: false,
     error: false,
   };
   handleInputChange = (event) => {
-    this.setState({ usuario: event.target.value });
+    this.setState({ nombre: event.target.value });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { usuario } = this.state;
-    fetch("https://api.github.com/users/" + usuario)
+    const {nombre } = this.state;
+    fetch("https://api.github.com/users/" + nombre)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -25,15 +26,14 @@ class Inicio extends React.Component {
           usuario: data,
         });
       });
-      this.repoUsuaruarios()
+    this.repoUsuaruarios();
   };
 
-  repoUsuaruarios = (event) => {
-     const { usuario } = this.state;
-    fetch(`https://api.github.com/users/${usuario}/repos`)
+  repoUsuaruarios = () => {
+    const { nombre } = this.state;
+    fetch(`https://api.github.com/users/${nombre}/repos`)
       .then((resp) => resp.json())
       .then((result) => {
-        console.log(result);
         this.setState({
           repos: result,
         });
@@ -45,7 +45,6 @@ class Inicio extends React.Component {
       <>
         <Buscardor
           handleChange={this.handleInputChange}
-          usuario={this.state.usuario}
           handleSubmit={this.handleSubmit}
         />
 
